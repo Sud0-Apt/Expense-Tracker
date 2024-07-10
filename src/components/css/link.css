@@ -1,0 +1,25 @@
+.links-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .links-section h2 {
+    font-size: 2em;
+  }
+  
+  .links-section nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .links-section nav ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .links-section nav ul li a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-size: 1.2em;
+  }
+  
