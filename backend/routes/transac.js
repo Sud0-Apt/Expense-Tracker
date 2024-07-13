@@ -1,27 +1,27 @@
 const express = require('express')
 
 const router = express. Router()
+const {
+    createTransactions,
+    getTransactions,
+    getOneTransaction,
+    deleteTransaction,
+    updateTransaction
+} = require('../controllers/txnController')
 
 // GET all workouts
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all workouts'})
-})
+router.get('/', getTransactions)
+
 //GET a single workout
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single workout'})
-})
+router.get('/:id', getOneTransaction)
 
 // POST a new workout
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new workout'})
-    })
+router.post('/', createTransactions)
+
 // DELETE a workout
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a workout'})
-})
+router.delete('/:id', deleteTransaction)
+
 // UPDATE a workout
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a workout'})
-})
+router.patch('/:id', updateTransaction)
 
 module.exports = router
