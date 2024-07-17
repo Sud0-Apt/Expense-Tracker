@@ -18,7 +18,7 @@ import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const NavbarUser = () => {
   const navigate = useNavigate();
   const handleLoginClick = () => {
     navigate("/login");
@@ -48,7 +48,7 @@ const Navbar = () => {
         <a href="">Home</a>
         <a href="">About</a>
         <a href="">Contact</a>
-        <button className="primary-button" onClick={handleLoginClick}>Login</button>
+        <button className="primary-button" onClick={handleLoginClick}>Profile</button>
         
       </div>
       <div className="navbar-menu-container">
@@ -78,4 +78,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarUser;

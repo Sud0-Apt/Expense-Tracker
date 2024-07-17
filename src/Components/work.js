@@ -12,16 +12,16 @@ const Work = () => {
       // text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
       link: "/dashboard"
     },
-    // {
-    //   image: ChooseMeals,
-    //   title: "",
-    //   text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-    // },
-    // {
-    //   image: DeliveryMeals,
-    //   title: "Fast Deliveries",
-    //   text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-    // },
+    {
+       image: ChooseMeals,
+       title: "View Transactions",
+       text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
+     },
+     {
+       image: DeliveryMeals,
+       title: "Predict your expenses",
+       text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+     },
   ];
   return (
     <div className="work-section-wrapper">
