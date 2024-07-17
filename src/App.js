@@ -33,6 +33,7 @@ import Contact from "./Components/contact";
 import Footer from "./Components/footer";
 import { Mail } from '@mui/icons-material';
 import Main from './Components/main';
+import MainUser from './Components/user';
 // import { Routes } from "react-router-dom";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
       <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/addtransac" element={<Dashboard />} />
           <Route path="/" element={<Main />} />
       </Routes>
     </div>

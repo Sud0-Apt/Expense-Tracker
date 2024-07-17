@@ -74,7 +74,7 @@ nav {
 .navbar-links-container a {
   margin-right: 3rem;
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 1.1rem;
   font-weight: 600;
 }
@@ -328,6 +328,7 @@ nav {
   border-radius: 1rem;
   color: #505050;
   margin: 1rem 2rem;
+  text-decoration: none;
 }
 .work-section-info h2 {
   margin: 1rem 0rem;
