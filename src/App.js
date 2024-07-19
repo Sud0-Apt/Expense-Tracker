@@ -35,19 +35,33 @@ import { Mail } from '@mui/icons-material';
 import Main from './Components/main';
 import MainUser from './Components/user';
 // import { Routes } from "react-router-dom";
+// import Dashboard from './Components/dashboard';
+import ProtectedRoute from './Components/protectedRoute';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
     <div className="App">
       <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/addtransac" element={<Dashboard />} />
+          {/* <Route path="/addtransac" element={<Dashboard />} /> */}
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/" element={<Main />} />
       </Routes>
     </div>
     </Router>
+    </AuthProvider>
   );
 }
 

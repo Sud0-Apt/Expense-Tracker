@@ -1,15 +1,31 @@
+// src/components/Login.js
+
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './css/login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add authentication logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
+      setMessage(response.data.message);
+      if (response.status === 200) {
+        navigate('/protected');
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('Login failed');
+      }
+    }
   };
 
   return (
@@ -36,6 +52,7 @@ function Login() {
         </div>
         <button type="submit" className="login-button">Login</button>
       </form>
+      {message && <p className="message">{message}</p>}
       <p className="register-link">
         New user? <a href="/register">Register here</a>
       </p>
