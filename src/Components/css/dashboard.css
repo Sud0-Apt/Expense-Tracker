@@ -53,6 +53,15 @@
   .btn:hover {
     background-color: #45a049;
   }
+
+  div.error {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+  }
   
   /* Responsive styling */
   @media (max-width: 768px) {

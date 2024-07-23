@@ -7,8 +7,16 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [token,setToken]=useState(null)
+  const login = (userData,tokendata) => {
+    setUser(userData);
+    setToken(tokendata)
+  };
 
-  useEffect(() => {
+  const logout = () => {
+    setUser(null);
+  };
+  /*useEffect(() => {
     // Check if the user is already logged in
     axios.get('http://localhost:5000/api/auth/protected', { withCredentials: true })
       .then(response => {
@@ -19,10 +27,10 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch(() => setUser(false));
-  }, []);
+  }, []);*/
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user,token,login,logout }}>
       {children}
     </AuthContext.Provider>
   );

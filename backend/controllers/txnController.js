@@ -3,7 +3,8 @@ const mongoose=require('mongoose')
 
 // get all transactions
 const getTransactions = async (req, res) => {
-    const transacs= await Transaction.find({}).sort({createdAt:-1})
+    const user_id=req.user._id
+    const transacs= await Transaction.find({userid:user_id}).sort({createdAt:-1})
 
     res.status(200).json(transacs)
 }
@@ -25,10 +26,10 @@ const getOneTransaction = async (req,res) => {
 
 // create new transaction
 const createTransactions = async (req, res) => {
-    const {type, Amount, TxnDate} = req.body
+    const {type, Amount, TxnDate, userid} = req.body
     // add doc to db
     try {
-        const transac = await Transaction.create({type, Amount, TxnDate})
+        const transac = await Transaction.create({type, Amount, TxnDate, userid})
         res.status(200).json (transac)
     } catch (error) {
         res.status(400).json({error: error.message})

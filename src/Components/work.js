@@ -10,17 +10,19 @@ const Work = () => {
       image: PickMeals,
       title: "Dashboard",
       // text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-      link: "/dashboard"
+      link: "/addtransac"
     },
     {
        image: ChooseMeals,
        title: "View Transactions",
        text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
+       link:"/transactions"
      },
      {
        image: DeliveryMeals,
-       title: "Predict your expenses",
+       title: "Visualize your expenses",
        text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+       link:"/visualdash"
      },
   ];
   return (

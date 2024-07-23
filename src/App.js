@@ -39,6 +39,8 @@ import MainUser from './Components/user';
 import ProtectedRoute from './Components/protectedRoute';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import FetchTransactions from './Components/fetchtransac';
+import VisualDashboard from './Components/visual_dashboard';
 
 function App() {
   return (
@@ -48,16 +50,19 @@ function App() {
       <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/addtransac" element={<Dashboard />} /> */}
-          <Route 
-            path="/dashboard" 
+          <Route path="/addtransac" element={<Dashboard />} />
+          {/*<Route 
+            path="/addtransac" 
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             } 
-          />
+          />*/}
           <Route path="/" element={<Main />} />
+          <Route path="/home_user" element={<MainUser />} />
+          <Route path="/transactions" element={<FetchTransactions/>} />
+          <Route path='/visualdash' element={<VisualDashboard/>}/>
       </Routes>
     </div>
     </Router>

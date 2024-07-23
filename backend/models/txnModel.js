@@ -14,6 +14,9 @@ const txnSchema = new Schema({
     TxnDate: {
         type: Date,
         required: true
+    },
+    userid:{
+        type: mongoose.Schema.Types.ObjectId, required: true
     }
 }, { timestamps: true })
 

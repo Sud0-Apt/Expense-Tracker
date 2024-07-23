@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './css/login.css';
+import { useAuthContext } from '../hooks/useAuth';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const {login}=useAuthContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,7 +19,11 @@ function Login() {
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
       setMessage(response.data.message);
       if (response.status === 200) {
-        navigate('/protected');
+        login(response.data.user,response.data.token);
+        console.log(response.data.message);
+        console.log(response.data.user);
+        console.log(response.data.token);
+        navigate('/home_user');
       }
     } catch (error) {
       if (error.response && error.response.data) {
