@@ -1,5 +1,10 @@
 const User = require('../models/userModel');
 const validator = require('validator');
+const jwt = require('jsonwebtoken');
+
+const createtoken=(_id) => {
+  return jwt.sign({_id}, process.env.SECRET, {expiresIn:'3d'})
+}
 
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -21,9 +26,10 @@ exports.register = async (req, res) => {
     const hashedPassword = await User.hashPassword(password);
     const user = new User({ username, email, password: hashedPassword });
     await user.save();
+    const token=createtoken(user._id)
     // Exclude the password from the response
     const { password: _, ...userDetails } = user.toObject();
-    res.status(201).json({ message: 'User registered successfully', userDetails });
+    res.status(201).json({ message: 'User registered successfully', userDetails,token });
   } catch (error) {
     if (error.code === 11000) { // Duplicate key error
       res.status(400).json({ message: 'Username or email already exists' });
@@ -40,8 +46,9 @@ exports.login = async (req, res) => {
     if (!user || !(await user.isValidPassword(password))) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
+    const token=createtoken(user._id)
     req.session.userId = user._id;
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({message: "Login successsful",user:user,token:token});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

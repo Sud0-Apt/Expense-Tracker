@@ -1,26 +1,43 @@
 import React, { useState } from 'react';
 import './css/dashboard.css';
+import { useTxnContext } from '../hooks/useTxn';
+import { useAuthContext } from '../hooks/useAuth';
 
 function Dashboard() {
-  const [expense, setExpense] = useState({
-    date: '',
-    description: '',
-    amount: '',
-    category: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setExpense({
-      ...expense,
-      [name]: value
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const {dispatch}=useTxnContext()
+  const {user}=useAuthContext()
+  const {token}=useAuthContext()
+  const [type,setType]=useState('')
+  const [Amount, setAmt]=useState('')
+  const [TxnDate, setDate]=useState('')
+  const [error,setError]=useState(null)
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send expense data to backend or add it to state)
-    console.log(expense);
+    const userid=user._id
+    const txn = {type,Amount,TxnDate,userid}
+    console.log(txn)
+    const response = await fetch('http://localhost:5000/api/txn', {
+      method: 'POST',
+      body: JSON.stringify(txn),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${token}`
+      }
+    })
+    const json = await response.json()
+    if(!response.ok){
+      setError(json.error)
+    }
+    if(response.ok){
+      setType('')
+      setAmt('')
+      setDate('')
+      setError(null)
+      dispatch({type:'CREATE_TXN',payload:json})
+      console.log(txn);
+    }
+    
   };
 
   return (
@@ -33,30 +50,20 @@ function Dashboard() {
             type="date"
             id="date"
             name="date"
-            value={expense.date}
-            onChange={handleChange}
+            value={TxnDate}
+            onChange={(e) => setDate(e.target.value)}
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={expense.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        
         <div className="form-group">
           <label htmlFor="amount">Amount</label>
           <input
             type="number"
             id="amount"
             name="amount"
-            value={expense.amount}
-            onChange={handleChange}
+            value={Amount}
+            onChange={(e) => setAmt(e.target.value)}
             required
           />
         </div>
@@ -65,8 +72,8 @@ function Dashboard() {
           <select
             id="category"
             name="category"
-            value={expense.category}
-            onChange={handleChange}
+            value={type}
+            onChange={(e) => setType(e.target.value)}
             required
           >
             <option value="">Select a category</option>
@@ -78,6 +85,7 @@ function Dashboard() {
           </select>
         </div>
         <button type="submit" className="btn">Add Expense</button>
+        {error && <div className="error">{error} </div>}
       </form>
     </div>
   );
