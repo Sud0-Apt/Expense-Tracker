@@ -40,8 +40,8 @@ function FetchTransactions() {
         <tbody>
           {transactions && transactions.map((transaction) => (
             <tr key={transaction.id}>
-              <td>{transaction.TxnDate}</td>
-              <td>${transaction.Amount}</td>
+              <td>{transaction.TxnDate.split('T')[0]}</td>
+              <td>Rs.{transaction.Amount}</td>
               <td>{transaction.type}</td>
             </tr>
           ))}
