@@ -3,6 +3,7 @@ import './css/fetchtransac.css';
 import { useTxnContext } from '../hooks/useTxn';
 import { type } from '@testing-library/user-event/dist/type';
 import { useAuthContext } from '../hooks/useAuth';
+import NavbarPage from './navbarpage';
 
 function FetchTransactions() {
     const {transactions,dispatch}=useTxnContext()
@@ -28,7 +29,7 @@ function FetchTransactions() {
 
   return (
     <div className="transactions">
-      <h2>Transactions</h2>
+      <NavbarPage title="Transactions"/>
       <table className="transactions-table">
         <thead>
           <tr>
