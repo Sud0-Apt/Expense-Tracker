@@ -5,6 +5,7 @@ import {
 import './css/VisualDashboard.css';
 import { useTxnContext } from '../hooks/useTxn';
 import { useAuthContext } from '../hooks/useAuth';
+import NavbarPage from './navbarpage';
 
 const VisualDashboard = () => {
   const {transactions,dispatch}=useTxnContext()
@@ -75,7 +76,7 @@ const VisualDashboard = () => {
 
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <NavbarPage title="Dashboard"/>
       <div className="chart-container">
         <div className="chart">
           <h3>Bar Chart</h3>

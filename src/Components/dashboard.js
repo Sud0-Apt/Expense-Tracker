@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './css/dashboard.css';
 import { useTxnContext } from '../hooks/useTxn';
 import { useAuthContext } from '../hooks/useAuth';
+import NavbarPage from './navbarpage';
 
 function Dashboard() {
   const {dispatch}=useTxnContext()
@@ -42,7 +43,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h2>Expense Entry</h2>
+      <NavbarPage title="Expense Entry" />
       <form onSubmit={handleSubmit} className="expense-form">
         <div className="form-group">
           <label htmlFor="date">Date</label>
