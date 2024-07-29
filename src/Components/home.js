@@ -1,6 +1,6 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
-// import BannerImage from "../Assets/home-banner-image.png";
+import BannerImage1 from "../Assets/home-banner-image.png";
 import BannerImage from "../Assets/blue_dashboard.jpg";
 import Navbar from "./navbar";
 import { FiArrowRight } from "react-icons/fi";
@@ -9,24 +9,24 @@ const Home = () => {
   return (
     <div className="home-container">
       <Navbar />
-      <div className="home-banner-container">
+      <div id="home-section" className="home-banner-container">
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
           <h1 className="primary-heading">
-            Your Favourite Food Delivered Hot & Fresh
+          Track, Save, Thrive: Your Sassy Money Guide!
           </h1>
           <p className="primary-text">
-            Healthy switcher chefs do all the prep work, like peeding, chopping
-            & marinating, so you can cook a fresh food.
+          Tired of wondering where all your money went? 
+          Say goodbye to financial mysteries and hello to PennyWise. Because every penny counts, and we make sure yours do too! 
           </p>
           <button className="secondary-button">
             Order Now <FiArrowRight />{" "}
           </button>
         </div>
         <div className="home-image-section">
-          <img src={BannerImage} alt="" />
+          <img src={BannerImage1} alt="" />
         </div>
       </div>
     </div>
