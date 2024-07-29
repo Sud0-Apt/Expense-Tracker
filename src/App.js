@@ -41,6 +41,7 @@ import ProtectedRoute from './Components/protectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import FetchTransactions from './Components/fetchtransac';
 import VisualDashboard from './Components/visual_dashboard';
+import Profile from './Components/profile'
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/addtransac" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
           {/*<Route 
             path="/addtransac" 
             element={

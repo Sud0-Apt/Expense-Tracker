@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Logo from "../Assets/Logo.svg";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
@@ -17,25 +17,39 @@ import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-scroll';
+import { AuthContext } from "../context/AuthContext";
 
 const NavbarUser = () => {
+  const [showProfile, setShowProfile] = useState(false);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLoginClick = () => {
-    navigate("/login");
+    navigate("/profile");
   };
+
+  const handleLogout = () => {
+    logout();
+    setShowProfile(false);  // Ensure this closes the profile modal
+    navigate('/login');
+  };
+
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
       text: "Home",
       icon: <HomeIcon />,
+      to: "home-section"
     },
     {
       text: "About",
       icon: <InfoIcon />,
+      to: "about-section"
     },
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
+      to: "contact-section"
     },
   ];
   return (
@@ -45,9 +59,9 @@ const NavbarUser = () => {
         {/* <a href="">PennyWise</a> */}
       </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
+        <Link to="home-section" smooth={true} duration={500}>Home</Link>
+        <Link to="about-section" smooth={true} duration={500}>About</Link>
+        <Link to="contact-section" smooth={true} duration={500}>Contact</Link>
         <button className="primary-button" onClick={handleLoginClick}>Profile</button>
         
       </div>
@@ -79,3 +93,4 @@ const NavbarUser = () => {
 };
 
 export default NavbarUser;
+
