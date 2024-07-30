@@ -10,7 +10,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const {login}=useAuthContext();
+  const {dispatch}=useAuthContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,7 +19,8 @@ function Login() {
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
       setMessage(response.data.message);
       if (response.status === 200) {
-        login(response.data.user,response.data.token);
+        localStorage.setItem('user',JSON.stringify(response.data))
+        dispatch({type:'LOGIN',payload:response.data})
         console.log(response.data.message);
         console.log(response.data.user);
         console.log(response.data.token);
@@ -30,6 +31,7 @@ function Login() {
         setMessage(error.response.data.message);
       } else {
         setMessage('Login failed');
+        console.log(error);
       }
     }
   };

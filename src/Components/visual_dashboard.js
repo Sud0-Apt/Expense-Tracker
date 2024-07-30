@@ -17,7 +17,7 @@ const VisualDashboard = () => {
     const fetchTransactions = async () => {
       const response = await fetch('http://localhost:5000/api/txn/',{
         headers:{
-          'Authorization':`Bearer ${token}`
+          'Authorization':`Bearer ${user.token}`
         }
       })
       const json = await response.json()
@@ -54,7 +54,7 @@ const VisualDashboard = () => {
   if (user) {
       fetchTransactions();
   }
-  }, []);
+  }, [dispatch,user]);
 
   if (!user) {
     return <p>Please log in to view your dashboard.</p>;
@@ -148,3 +148,4 @@ const VisualDashboard = () => {
 }
 
 export default VisualDashboard;
+

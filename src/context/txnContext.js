@@ -12,6 +12,16 @@ export const txnReducer = (state, action) => {
             return {
                 transactions: [action.payload, ...state.transactions]
             }
+        case 'DELETE_TXN':
+            return {
+                transactions:state.transactions.filter((t)=> t._id!==action.payload._id)
+            }
+        case 'UPDATE_TXN':
+            return {
+                transactions: state.transactions.map(t => 
+                    t._id === action.payload._id ? action.payload : t
+                )
+            }
         default:
             return state
     }

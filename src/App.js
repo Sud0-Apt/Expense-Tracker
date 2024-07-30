@@ -42,6 +42,7 @@ import { AuthProvider } from './context/AuthContext';
 import FetchTransactions from './Components/fetchtransac';
 import VisualDashboard from './Components/visual_dashboard';
 import Profile from './Components/profile'
+import UpdateTxn from './Components/updatetxn';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/addtransac" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/updatetxn" element={<UpdateTxn />} />
           {/*<Route 
             path="/addtransac" 
             element={
