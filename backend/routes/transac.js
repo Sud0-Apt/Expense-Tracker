@@ -26,6 +26,6 @@ router.post('/', createTransactions)
 router.delete('/:id', deleteTransaction)
 
 // UPDATE a txn
-router.patch('/:id', updateTransaction)
+router.put('/:id', updateTransaction)
 
 module.exports = router

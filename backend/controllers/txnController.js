@@ -21,12 +21,13 @@ const getOneTransaction = async (req,res) => {
     if (!transac) {
         return res.status(404).json({error: 'No such transaction'})
     }
-    res.status(200).json (transac)
+    res.status(200).json(transac)
 }
 
 // create new transaction
 const createTransactions = async (req, res) => {
-    const {type, Amount, TxnDate, userid} = req.body
+    const userid=req.user._id
+    const {type, Amount, TxnDate} = req.body
     // add doc to db
     try {
         const transac = await Transaction.create({type, Amount, TxnDate, userid})

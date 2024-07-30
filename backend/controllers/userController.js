@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
     if (!user || !(await user.isValidPassword(password))) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
-    const token=createtoken(user._id)
+    const token=createtoken(user._id);
     req.session.userId = user._id;
     res.status(200).json({message: "Login successsful",user:user,token:token});
   } catch (error) {
