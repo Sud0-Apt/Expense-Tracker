@@ -1,29 +1,44 @@
 // src/context/AuthContext.js
 
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect,useReducer } from 'react';
 import axios from 'axios';
+import { type } from '@testing-library/user-event/dist/type';
 
 export const AuthContext = createContext();
 
+export const authReducer= (state,action) =>{
+  switch(action.type){
+    case 'LOGIN':
+      return {user: action.payload}
+    case 'LOGOUT':
+      return {user:null}
+    default:
+      return state
+  }
+}
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [state,dispatch]=useReducer(authReducer,{
+    user:null
+  })
+
+  useEffect(()=>{
+    const user=JSON.parse(localStorage.getItem('user'))
+
+    if (user){
+      dispatch({type:'LOGIN',payload:user})
+    }
+  },[])
+  /*const [user, setUser] = useState(null);
   const [token,setToken]=useState(null)
   const login = (userData,tokendata) => {
-    setUser(userData);
-    setToken(tokendata)
+    setUser({token: tokendata,userData})
+    setToken(tokendata);
   };
 
   const logout = () => {
     setUser(null);
   };
-
-
-  useEffect(() => {
-    fetch('/api/users/profile')
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((err) => console.error(err));
-  }, []);
+  { user,token,login,logout }*/
   /*useEffect(() => {
     // Check if the user is already logged in
     axios.get('http://localhost:5000/api/auth/protected', { withCredentials: true })
@@ -38,7 +53,7 @@ export const AuthProvider = ({ children }) => {
   }, []);*/
 
   return (
-    <AuthContext.Provider value={{ user,setUser,token,login,logout }}>
+    <AuthContext.Provider value={{...state,dispatch}}>
       {children}
     </AuthContext.Provider>
   );
