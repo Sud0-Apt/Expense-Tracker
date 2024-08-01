@@ -1,9 +1,12 @@
 import React from "react";
 import AboutBackground from "../Assets/about-background.png";
-import AboutBackgroundImage from "../Assets/about-background-image.png";
+import AboutBackgroundImage from "../Assets/logopenny.png";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 
 const About = () => {
+  const redirectToYouTube = () => {
+    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  };
   return (
     <div id="about-section" className="about-section-container">
       <div className="about-background-image-container">
@@ -28,8 +31,8 @@ const About = () => {
         Transform the way you handle money and pave the path to financial success!
         </p>
         <div className="about-buttons-container">
-          <button className="secondary-button">Learn More</button>
-          <button className="watch-video-button">
+          
+          <button className="watch-video-button" onClick={redirectToYouTube}>
             <BsFillPlayCircleFill /> Watch Video
           </button>
         </div>

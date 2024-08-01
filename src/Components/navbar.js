@@ -89,7 +89,7 @@
 // src/components/Navbar.js
 
 import React, { useState } from "react";
-import Logo from "../Assets/Logo 2.png";
+import Logo from "../Assets/Penny Wise.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";

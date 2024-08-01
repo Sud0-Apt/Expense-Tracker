@@ -77,7 +77,7 @@ const Work = () => {
   const workInfoData = [
     {
       image: PickMeals,
-      title: "Dashboard",
+      title: "Add Expense",
       link: "/addtransac"
     },
     {

@@ -254,20 +254,24 @@ import { AuthContext } from '../context/AuthContext';
 import './css/profile.css';
 import { FaUserCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuth';
 
 const Profile = ({ onClose }) => {
   const { user, logout, updateUser } = useContext(AuthContext);
-  const [username, setUsername] = useState(user ? user.username : '');
-  const [email, setEmail] = useState(user ? user.email : '');
+  //const user=useAuthContext()
+  const [username, setUsername] = useState(user ? user.user.username : '');
+  const [email, setEmail] = useState(user ? user.user.email : '');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(user.user.email,user.user.username)
+
     if (user) {
-      setUsername(user.username);
-      setEmail(user.email);
+      setUsername(user.user.username);
+      setEmail(user.user.email);
     }
   }, [user]);
 
