@@ -48,7 +48,7 @@
 
 
 import React from "react";
-import Logo from "../Assets/Logo.svg";
+import Logo from "../Assets/Penny Wise.png";
 import { BsTwitter, BsYoutube } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
@@ -78,22 +78,19 @@ const Footer = () => {
       </div>
       <div className="footer-section-two">
         <div className="footer-section-columns">
-          <span>Quality</span>
-          <span>Help</span>
           <span>Share</span>
           <span>Careers</span>
-          <span>Testimonials</span>
           <span>Work</span>
         </div>
         <div className="footer-section-columns">
-          <span>244-5333-7783</span>
-          <span>hello@food.com</span>
-          <span>press@food.com</span>
-          <span>contact@food.com</span>
+          <span>hello@pennywise.org</span>
+          <span>press@pennywise.org</span>
+          <span>contact@pennywise.org</span>
         </div>
         <div className="footer-section-columns">
           <span>Terms & Conditions</span>
           <span>Privacy Policy</span>
+          <span>Help</span>
         </div>
       </div>
     </div>
