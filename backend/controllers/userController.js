@@ -106,3 +106,35 @@ exports.updateUser = async (req, res) => {
       res.status(401).json({ user: null });
     }
   };
+
+  exports.updateUserProfile = async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const user = await User.findById(req.user.id);
+  
+      if (username) user.username = username;
+      if (password) user.password = await bcrypt.hash(password, 10);
+  
+      await user.save();
+      res.json(user);
+    } catch (error) {
+      res.status(500).json({ error: 'Server error' });
+    }
+  };
+  
+  exports.logout = (req, res) => {
+    res.json({ message: 'Logged out successfully' });
+  };
+
+ exports.getuserProfile = (req, res) => {
+    const user = req.user; // Assume req.user is populated by the authenticate middleware
+    if (user) {
+      res.json({
+        username: user.username,
+        email: user.email,
+        // Add other user details as needed
+      });
+    } else {
+      res.status(401).json({ message: 'Unauthorized' });
+    }
+  };

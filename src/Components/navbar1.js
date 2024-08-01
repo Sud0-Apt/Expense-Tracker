@@ -15,7 +15,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
+import Profile from './profile';
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import { Link } from 'react-scroll';
 import { useNavigate } from "react-router-dom";
 
 const NavbarUser = () => {
@@ -28,14 +30,17 @@ const NavbarUser = () => {
     {
       text: "Home",
       icon: <HomeIcon />,
+      to: "home-section"
     },
     {
       text: "About",
       icon: <InfoIcon />,
+      to: "about-section"
     },
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
+      to: "contact-section"
     },
   ];
   return (
@@ -45,9 +50,9 @@ const NavbarUser = () => {
         {/* <a href="">PennyWise</a> */}
       </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
+        <Link to="home-section" smooth={true} duration={500}>Home</Link>
+        <Link to="about-section" smooth={true} duration={500}>About</Link>
+        <Link to="contact-section" smooth={true} duration={500}>Contact</Link>
         <button className="primary-button" onClick={handleLoginClick}>Profile</button>
         
       </div>
@@ -74,11 +79,13 @@ const NavbarUser = () => {
           <Divider />
         </Box>
       </Drawer>
+      {/* {showProfile && <Profile onClose={closeProfile} />} */}
     </nav>
   );
 };
 
 export default NavbarUser;
+
 
 
 

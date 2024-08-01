@@ -6,8 +6,11 @@ const {
     protectedRoute,
     updateUser,
     deleteUser,
-    checkSession
+    checkSession,
+    getuserProfile
 } = require('../controllers/userController');
+
+router.get('/profile', getuserProfile);
 
 router.post('/register', register);
 
