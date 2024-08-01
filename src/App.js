@@ -43,6 +43,7 @@ import FetchTransactions from './Components/fetchtransac';
 import VisualDashboard from './Components/visual_dashboard';
 import Profile from './Components/profile'
 import UpdateTxn from './Components/updatetxn';
+// import { Navigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/addtransac" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/updatetxn" element={<UpdateTxn />} />
+          {/* <Route path="*" element={<Navigate to="/login" />} /> */}
           {/*<Route 
             path="/addtransac" 
             element={

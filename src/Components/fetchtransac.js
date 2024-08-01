@@ -61,7 +61,7 @@ function FetchTransactions() {
             <th>Amount</th>
             <th>Category</th>
             <th>Modify</th>
-            <th>Delete</th>
+            {/* <th>Delete</th> */}
           </tr>
         </thead>
         <tbody>

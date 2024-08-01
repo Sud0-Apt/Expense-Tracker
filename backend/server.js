@@ -4,6 +4,8 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const txnRoutes = require('./routes/transac')
+const contactRoute = require("./routes/contact");
+const nodemailer = require("nodemailer");
 require('dotenv').config()
 
 //express app
@@ -34,6 +36,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/txn', txnRoutes)
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', contactRoute);
 
 // connect to db
 // mongoose.connect(process.env.MONGO_URI)

@@ -1,10 +1,11 @@
 // src/components/Login.js
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './css/login.css';
 import { useAuthContext } from '../hooks/useAuth';
+import Navbar from "./navbar";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ function Login() {
   const [message, setMessage] = useState('');
   const {dispatch}=useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ function Login() {
         console.log(response.data.message);
         console.log(response.data.user);
         console.log(response.data.token);
-        navigate('/home_user');
+        navigate('/');
       }
     } catch (error) {
       if (error.response && error.response.data) {
@@ -62,9 +64,13 @@ function Login() {
       </form>
       {message && <p className="message">{message}</p>}
       <p className="register-link">
-        New user? <a href="/register">Register here</a>
+        New user? <a href="/register"> Register here</a>
+      </p>
+      <p className="register-link">
+        Go back and Explore?<a href="/"> Home</a>
       </p>
     </div>
+    
   );
 }
 

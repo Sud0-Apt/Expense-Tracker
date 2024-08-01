@@ -64,7 +64,7 @@ function Register() {
       </form>
       {message && <p className="message">{message}</p>}
       <p className="login-link">
-        Already have an account? <a href="/">Login here</a>
+        Already have an account? <a href="/login">Login here</a>
       </p>
     </div>
   );
