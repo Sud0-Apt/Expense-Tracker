@@ -1,6 +1,6 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
-import BannerImage1 from "../Assets/money.png";
+import BannerImage1 from "../Assets/money-home-page.jpg";
 import BannerImage from "../Assets/blue_dashboard.jpg";
 import Navbar from "./navbar";
 import { FiArrowRight } from "react-icons/fi";
@@ -31,7 +31,7 @@ const Home = () => {
           </button>
         </div>
         <div className="home-image-section">
-          <img src={BannerImage1} alt="" />
+          <img src={BannerImage1} alt=""/>
         </div>
       </div>
     </div>
