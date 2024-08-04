@@ -108,6 +108,7 @@ import DeliveryMeals from "../Assets/visual.webp";
 function Dashboard() {
   const { dispatch } = useTxnContext();
   const { user } = useAuthContext();
+  const [maxDate, setMaxDate] = useState('');
   const navigate = useNavigate();
   
   const [type, setType] = useState('');
@@ -116,6 +117,8 @@ function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    setMaxDate(today);
     if (!user) {
       navigate('/login');
     }
@@ -178,11 +181,14 @@ function Dashboard() {
             type="date"
             id="date"
             name="date"
+            max={maxDate} 
             value={TxnDate}
             onChange={(e) => setDate(e.target.value)}
             required
           />
+          
         </div>
+        
         <div className="form-group">
           <label htmlFor="amount">Amount</label>
           <input
@@ -232,6 +238,7 @@ function Dashboard() {
         ))}
       </div>
     </div>
+    
   );
 }
 
