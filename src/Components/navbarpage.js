@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/system';
-import Logo from "../Assets/Logo 2.png"; // Replace this with the actual path to your logo image
+import Logo from "../Assets/Penny Wise.png";
 
 const NavbarPage = ({ title }) => {
     return (
-      <AppBar position="fixed" sx={{ backgroundColor: 'white' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: "#f6f6f6" }}>
         <Container>
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Box display="flex" alignItems="center">
