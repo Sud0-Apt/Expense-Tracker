@@ -1,5 +1,5 @@
 {
-  "proxy": "https://pennywise-an-expense-tracker.onrender.com",
+  "proxy": "https://expense-tracker-y2l8.onrender.com",
   "name": "react-expense-tracker",
   "version": "0.1.0",
   "private": true,
