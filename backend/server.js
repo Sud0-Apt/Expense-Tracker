@@ -14,6 +14,11 @@ const app=express()
 // const mongoose=require('mongoose')
 connectDB();
 
+//deployment
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "build")));
+
 // middleware
 app.use(express.json())
 
